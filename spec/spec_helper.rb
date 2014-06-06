@@ -75,8 +75,8 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
-require 'devise'
-RSpec.configure do |config|
-  config.include Devise::TestHelpers, type: :controller
-end
+  require 'devise'
+  RSpec.configure do |config|
+    config.include Devise::TestHelpers, type: :controller
+  end
 end
