@@ -14,5 +14,14 @@ class Task < ActiveRecord::Base
 
 	def status_incomplete
 		self.status = "incomplete"
+		self.save
+	end
+
+	def flip_status
+		if self.status == "incomplete"
+			self.status_complete
+		else
+			self.status_incomplete
+		end
 	end
 end
