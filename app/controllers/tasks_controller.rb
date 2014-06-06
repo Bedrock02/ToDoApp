@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @user = current_user
   end
 
   # GET /tasks/1
@@ -25,11 +25,15 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.status_incomplete
+
+    @task.user = current_user
+
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @task }
+        format.html { redirect_to "/", notice: 'Task was successfully created.' }
+        format.json { render action: 'index', status: :created, location: "/" }
       else
         format.html { render action: 'new' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -59,6 +63,12 @@ class TasksController < ApplicationController
       format.html { redirect_to tasks_url }
       format.json { head :no_content }
     end
+  end
+
+  def change_status
+    @task = Task.find_by_id(params[:id])
+    @task.flip_status
+    redirect_to "/"
   end
 
   private
