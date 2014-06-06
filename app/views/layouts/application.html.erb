@@ -13,7 +13,7 @@
 	<div class = "row">
 		<ul class = "nav nav-pills">
 			<li><%= link_to "ToDoList", tasks_path %></li>
-			<li><%= link_to "Profile", edit_user_registration_path %></li>
+			<li><%= link_to "My Profile", edit_user_registration_path %></li>
 			<li><%= link_to "Link 2", "#" %></li>
 			<li>
 				<% if user_signed_in? %>
@@ -23,7 +23,6 @@
 					<% end %>
 			</li>
 		</ul>
-
 	</div>
 
 	<%= yield %>
