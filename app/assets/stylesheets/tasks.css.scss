@@ -2,3 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'bootstrap';
+.toDoNotes{
+	max-width: 200px;
+	min-height: 50px;
+	float: left;
+	margin-right: 50px;
+	margin-bottom: 10px;
+	padding: 5px 5px 1px 5px;
+	border: 2px solid;
+	border-radius: 5px;
+	a {
+		&:hover{
+			background-color: transparent;
+		}
+	}
+}
