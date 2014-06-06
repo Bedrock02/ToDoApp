@@ -13,12 +13,9 @@
 
   <div class="field">
     <%= f.label :body %><br>
-    <%= f.text_field :body %>
+    <%= f.text_area(:body,size: "24x6") %>
   </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
