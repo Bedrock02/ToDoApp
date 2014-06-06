@@ -1,5 +1,4 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
-require 'rails_helper'
 include Devise::TestHelpers
 
 FactoryGirl.define do
