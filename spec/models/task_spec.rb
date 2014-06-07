@@ -33,4 +33,19 @@ describe Task do
 			expect(@task.status).to eq("incomplete")
 		end
 	end
+
+	describe '.is_complete' do
+		context "task is incomplete" do
+			it 'indicates that task is not complete' do
+				expect(@task.is_complete).to eq(false)
+			end
+		end
+
+		context "task is complete" do
+			@task.flip_status
+			it 'indicates that task is complete' do
+				expect(@task.is_complete).to eq(true)
+			end
+		end
+	end
 end
