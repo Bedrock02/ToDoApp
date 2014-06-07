@@ -17,9 +17,10 @@ a {
 	padding: 5px 5px 1px 5px;
 	border: 2px solid;
 	border-radius: 5px;
-
+	box-shadow: -10px 10px 5px #888888;
+	
 	p{
-		&.item_status{
+		&.item-status{
 			font-size: .8em;
 		}
 	}
