@@ -24,4 +24,13 @@ class Task < ActiveRecord::Base
 			self.status_incomplete
 		end
 	end
+
+	def is_complete
+		if self.status == "complete"
+			true
+		else
+			false
+		end
+	end
+
 end
