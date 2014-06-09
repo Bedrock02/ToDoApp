@@ -10,5 +10,6 @@ class ApplicationController < ActionController::Base
   protected
   def configure_devise_permitted_parameters
   	devise_parameter_sanitizer.for(:sign_up) << :phone_number
+ 
   end
 end
