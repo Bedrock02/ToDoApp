@@ -46,10 +46,11 @@ gem 'bootstrap-sass', '~>3.1.1'
 #Gems needed for Twilio environment
 gem 'twilio-ruby', '~> 3.11.5'
 
-#Testing Gems for Testing Environemtn
+#Testing Gems for Testing Environment
 group :development, :test do
 	gem 'factory_girl_rails', '~> 4.4.1'
 	gem 'rspec-rails', '~> 3.0.0'
+	gem 'capybara', '~> 2.3.0'
 end
 
 #heroku friendly gem
