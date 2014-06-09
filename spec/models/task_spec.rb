@@ -6,7 +6,7 @@ describe Task do
 		@task = FactoryGirl.create(:task)
 	end
 
-	describe 'create' do
+	describe Task,'.new' do
 		it 'has a status of incomplete' do
 			expect(@task.status).to eq("incomplete")
 		end
@@ -16,7 +16,7 @@ describe Task do
 		end
 	end
 
-	describe '.status_complete' do
+	describe Task, '.status_complete' do
 	
 		it 'changes to complete state' do
 			@task.status_complete
@@ -24,7 +24,7 @@ describe Task do
 		end
 	end
 
-	describe '.status_incomplete' do	
+	describe Task, '.status_incomplete' do	
 		it 'changes a completed state to incomplete state' do
 			@task.status_complete
 			expect(@task.status).to eq("complete")
@@ -34,7 +34,7 @@ describe Task do
 		end
 	end
 
-	describe '.is_complete' do
+	describe Task, '.is_complete' do
 		context 'task is incomplete' do
 			it 'indicates that task is not complete' do
 				expect(@task.is_complete).to eq(false)
