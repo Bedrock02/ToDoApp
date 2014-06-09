@@ -5,13 +5,13 @@
 	  <%= devise_error_messages! %>
 
 	  <div><%= f.label :email %><br />
-	  <%= f.email_field :email, autofocus: true, :value => 'example@example.com' %></div>
+	  <%= f.email_field :email, autofocus: true %></div>
 	  <br />
 	  
 	  <!-- Added Attribute: Phone Number -->
 	  <div>
-	  	<%= f.label :phone_number%><br />
-	  	<%= f.text_field :phone_number, :value => '555-555-5555' %>
+	  	<%= f.label :phone_number%><br/><span> (ie. 555-555-5555)</span><br />
+	  	<%= f.text_field :phone_number %>
 	  </div>
 	  <br />
 
@@ -22,7 +22,12 @@
 	  <div><%= f.label :password_confirmation %><br />
 	    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 	  <br />
-	  <div><%= f.submit "Sign up" %></div>
+	  <div>
+	  	<%= f.submit "Sign up" %>
+	  	<%= link_to "/"  do %>
+	  		<button type="button" class = "btn btn-primary">Back</button>
+	  	<% end %>
+	  </div>
 		<br />
 	<% end %>
 </div>
