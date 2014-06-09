@@ -1,0 +1,8 @@
+<div class = "row">
+	<h1>Twilio Test!</h1>
+	<%= form_tag(controller: "texts", action: "text_test", method: "post") do %>
+		<%= label_tag(:q, "Message to") %>
+		<%= text_field_tag(:q) %>
+		<%= submit_tag("Send") %>
+  <% end %>
+</div>
