@@ -8,7 +8,7 @@ ToDoList::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'tasks#index'
   get "task/:id/flip(.:format)", controller:"tasks", action: :change_status, as: :change_status_task
-
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
