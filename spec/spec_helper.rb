@@ -13,6 +13,8 @@
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
 #
+require 'devise'
+require 'capybara/rspec'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
 # The settings below are suggested to provide a good initial experience
@@ -75,8 +77,10 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
-  require 'devise'
-  RSpec.configure do |config|
-    config.include Devise::TestHelpers, type: :controller
-  end
+
+  config.include Devise::TestHelpers, type: :controller
+  # RSpec.configure do |config|
+  #   config.include Devise::TestHelpers, type: :controller
+  #   config.include RSpec::Rails::RequestExampleGroup, type: :feature
+  # end
 end
