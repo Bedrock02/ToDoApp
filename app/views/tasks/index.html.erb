@@ -20,31 +20,32 @@
       
       <p><%= task.body %></p>
       <p class = "item-status"><strong>Status: <%= task.status %></strong></p>
-      
-      <!-- Link Used to change status -->
-      <%= link_to change_status_task_path(task) do %>
-        <button type="button" class="btn btn-info btn-sm">
-          <span>
-            <%= mark_as_helper(task.status) %>
-          </span>
-        </button>
-      <% end %>
-      
-      <% unless task.is_complete %>
-        <!--Link to Edit the ToDo's body -->
-        <%= link_to edit_task_path(task) do %>
-          <button type="button" class="btn btn-primary btn-sm">
-            <span class="glyphicon glyphicon-pencil"></span>
-            </button>
+      <div class = "task-buttons">
+        <!-- Link Used to change status -->
+        <%= link_to change_status_task_path(task) do %>
+          <button type="button" class="btn btn-info btn-sm">
+            <span>
+              <%= mark_as_helper(task.status) %>
+            </span>
+          </button>
         <% end %>
-      <% end %>
         
-      <!--Link to Delete the ToDo Item -->
-      <%= link_to task, method: :delete, data: {confirm: 'Are you sure?'} do %>
-        <button type="button" class="btn btn-danger btn-sm">
-          <span class="glyphicon glyphicon-trash"</span>
-        </button>
-      <% end %>
+        <% unless task.is_complete %>
+          <!--Link to Edit the ToDo's body -->
+          <%= link_to edit_task_path(task) do %>
+            <button type="button" class="btn btn-primary btn-sm">
+              <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+          <% end %>
+        <% end %>
+          
+        <!--Link to Delete the ToDo Item -->
+        <%= link_to task, method: :delete, data: {confirm: 'Are you sure?'} do %>
+          <button type="button" class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-trash"</span>
+          </button>
+        <% end %>
+      </div>
     
     </div>
   <% end %>
