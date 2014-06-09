@@ -1,5 +1,5 @@
 ToDoList::Application.routes.draw do
-  resources :tasks
+  resources :tasks, :texts
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -9,6 +9,10 @@ ToDoList::Application.routes.draw do
   root 'tasks#index'
   get "task/:id/flip(.:format)", controller:"tasks", action: :change_status, as: :change_status_task
   
+  get "text/", controller:"texts", action: :index, as: :text_index
+  post "text/test", controller: "texts", action: :text_test, as: :text_test
+  get "text/response", controller: "texts", action: :text_response, as: :text_response
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
