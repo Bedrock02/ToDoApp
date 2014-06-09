@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe "User must be authenticated first"  do
 	
 	context "Visits Root of Application" do
@@ -8,7 +9,7 @@ describe "User must be authenticated first"  do
 			expect(page).to have_content 'Sign in'
 			within('#new_user'){
 				expect(page).to have_content 'Email'
-				expect(page).to have_content 'Pass'
+				expect(page).to have_content 'Password'
 			}
 		end
 	end
@@ -20,7 +21,7 @@ describe "User must be authenticated first"  do
 			
 			within('#new_user'){
 				expect(page).to have_content 'Email'
-				expect(page).to have_content 'Pass'
+				expect(page).to have_content 'Password'
 			}
 		end
 	end
@@ -36,5 +37,4 @@ describe "User must be authenticated first"  do
 			}
 		end
 	end
-
 end
