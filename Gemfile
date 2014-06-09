@@ -40,6 +40,9 @@ gem 'devise', '~> 3.2.4'
 #Boostrap Gem Official
 gem 'bootstrap-sass', '~>3.1.1'
 
+#Gems needed for Twilio environment
+gem 'twilio-ruby', '~> 3.11.5'
+
 #Testing Gems for Testing Environemtn
 group :development, :test do
 	gem 'factory_girl_rails', '~> 4.4.1'
