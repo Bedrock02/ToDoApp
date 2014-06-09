@@ -4,7 +4,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
+
+#Heroku Friendly Database
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -49,6 +52,8 @@ group :development, :test do
 	gem 'rspec-rails', '~> 3.0.0'
 end
 
+#heroku friendly gem
+gem 'rails_12factor', group: :production
 #----------END ADDED GEMS BY STEVEN JIMENEZ----------
 
 # Use ActiveModel has_secure_password
