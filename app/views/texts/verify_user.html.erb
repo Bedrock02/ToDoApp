@@ -1,0 +1,11 @@
+<div class = "row">
+	<h2>Verify Your Number</h2>
+	<p>If you want to text in your tasks, simply verify your number by hitting the Verify Me button!</p>
+
+	<p> Your Number: <%= current_user.phone_number %></p>
+	<%= link_to send_verification_path(current_user.phone_number) do %>
+		<button type = "button" class ="btn btn-primary">
+			Verify Me
+		</button>
+	<% end %>
+</div>
