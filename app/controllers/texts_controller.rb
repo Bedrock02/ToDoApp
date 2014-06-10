@@ -21,6 +21,7 @@ class TextsController < ApplicationController
 	include Webhookable
 	
 	def index
+		@all_texts = SmsLog.all
 	end
 
 	def text_test
@@ -45,20 +46,23 @@ class TextsController < ApplicationController
 	end
 
 	def messaging
-		
+
 		message_body = params["Body"]
 		from_number = params["From"]
-		from_zip = params["FromZip"]
-
-		account_sid = "AC3126b43bc8d57aa5750bc123c75aabab"
-		auth_token = "ab465cea4dd39ee5bd577eab69adce53"
-		@client = Twilio::REST::Client.new account_sid, auth_token
+		
+		@log_entry = SmsLog.new(from: from_number, body: message_body)
+		@log_entry.save
 
 
-		@client.account.messages.create(
-			:from => "+13473345437",
-			:to => from_number,
-			:body => "Wow did I just get a message from you? Is your zip #{from_zip}?"
-			)
+		# account_sid = "AC3126b43bc8d57aa5750bc123c75aabab"
+		# auth_token = "ab465cea4dd39ee5bd577eab69adce53"
+		# @client = Twilio::REST::Client.new account_sid, auth_token
+
+
+		# @client.account.messages.create(
+		# 	:from => "+13473345437",
+		# 	:to => from_number,
+		# 	:body => "Wow did I just get a message from you?"
+		# 	)
 	end
 end
