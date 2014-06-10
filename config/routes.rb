@@ -12,6 +12,7 @@ ToDoList::Application.routes.draw do
   get "text/", controller:"texts", action: :index, as: :text_index
   post "text/test", controller: "texts", action: :text_test, as: :text_test
   get "text/response", controller: "texts", action: :text_response, as: :text_response
+  post "text/messaging", controller: "texts", action: :messaging, as: :text_messaging
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
