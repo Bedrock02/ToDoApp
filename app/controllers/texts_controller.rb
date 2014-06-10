@@ -1,7 +1,7 @@
 
 class TextsController < ApplicationController
-	# account_sid = AC02a8319fb7577ece4907235b1df4c940
-	# auth_token = 411e76923ff005f4d6a6bdc4fb4d33a7 	
+	include Webhookable
+	
 	def index
 	end
 
@@ -24,6 +24,12 @@ class TextsController < ApplicationController
 		@twiml = Twilio::TwiML::Response.new do |r|
 			r.Message "Thank you for texting in"
 		end
-		
+	end
+
+	def messaging
+		@twiml = Twilio::TwiML::Response.new do |r|
+			r.Message "Thank you for texting in"
+		end
+		render_twiml @twiml
 	end
 end
