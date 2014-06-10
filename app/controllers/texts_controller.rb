@@ -46,9 +46,19 @@ class TextsController < ApplicationController
 	end
 
 	def messaging
+		account_sid = "AC3126b43bc8d57aa5750bc123c75aabab"
+		auth_token = "ab465cea4dd39ee5bd577eab69adce53"
+		@client = Twilio::REST::Client.new account_sid, auth_token
 
 		message_body = params["Body"]
 		from_number = params["From"]
+
+		@client.account.messages.create(
+			:from => "+13473345437",
+			:to => "+16467031728",
+			:body => "Just got something from #{message_body} and the user said #{from_number}"
+			)
+
 		
 		@log_entry = SmsLog.new(from: from_number, body: message_body)
 		@log_entry.save
