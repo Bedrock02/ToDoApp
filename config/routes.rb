@@ -9,7 +9,8 @@ ToDoList::Application.routes.draw do
   root 'tasks#index'
   get "task/:id/flip(.:format)", controller:"tasks", action: :change_status, as: :change_status_task
   
-  get "text/", controller:"texts", action: :index, as: :text_index
+  get "verify_me", controller: "texts", action: :verify_user, as: :verify_number
+  get "send_verification", controller: "texts", action: :send_verification, as: :send_verification
   post "text/messaging", controller: "texts", action: :messaging, as: :text_messaging
 
   # Example of regular route:
