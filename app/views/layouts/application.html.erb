@@ -14,7 +14,7 @@
 		<ul class = "nav nav-pills">
 			<li><%= link_to "ToDoList", tasks_path %></li>
 			<li><%= link_to "My Profile", edit_user_registration_path %></li>
-			<li><%= link_to "Link 2", "#" %></li>
+			<li><%= link_to "Verify Me", verify_number_path %></li>
 			<li>
 				<% if user_signed_in? %>
 					<%= link_to "Logout", destroy_user_session_path, :method=>:delete %>
