@@ -19,8 +19,11 @@
 
 class TextsController < ApplicationController
 	include Webhookable
-	skip_before_action :verify_authenticity_token
 	
+	after_filter :set_header
+
+	skip_before_action :verify_authenticity_token
+
 	def index
 		@all_texts = SmsLog.all
 	end
@@ -47,6 +50,9 @@ class TextsController < ApplicationController
 	end
 
 	def messaging
-		render 'response.xml.erb', :content_type => 'text/xml'
+		response = Twilio::TwiML::Response.new do |r|
+			r.Message "Hi there it finally worked."
+		end
+		render_twiml(response)
 	end
 end
