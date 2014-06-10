@@ -17,6 +17,18 @@
 #   "FromZip"=>"<string>"
 # }
 
+# account_sid = "AC3126b43bc8d57aa5750bc123c75aabab"
+# 		auth_token = "ab465cea4dd39ee5bd577eab69adce53"
+# 		@client = Twilio::REST::Client.new account_sid, auth_token
+
+
+# 		@client.account.messages.create(
+# 			:from => "+13473345437",
+# 			:to => "+16467031728",
+# 			:body => params[:q]
+# 			)
+
+
 class TextsController < ApplicationController
 	include Webhookable
 	
@@ -25,31 +37,15 @@ class TextsController < ApplicationController
 	skip_before_action :verify_authenticity_token
 
 	def index
-		@all_texts = SmsLog.all
-	end
-
-	def text_test
-		account_sid = "AC3126b43bc8d57aa5750bc123c75aabab"
-		auth_token = "ab465cea4dd39ee5bd577eab69adce53"
-		@client = Twilio::REST::Client.new account_sid, auth_token
-
-
-		@client.account.messages.create(
-			:from => "+13473345437",
-			:to => "+16467031728",
-			:body => params[:q]
-			)
-
-		redirect_to action: :index
-	end
-
-	def text_response
-		@twiml = Twilio::TwiML::Response.new do |r|
-			r.Message "Thank you for texting in"
-		end
 	end
 
 	def messaging
+		text_body = params[:Body]
+		from_number = params[:From]
+
+		@new_log = SmsLog.new(body: text_body, from: from_number)
+		@new_log.save
+		
 		response = Twilio::TwiML::Response.new do |r|
 			r.Message "Hi there it finally worked."
 		end
