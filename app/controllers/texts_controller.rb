@@ -19,6 +19,7 @@
 
 class TextsController < ApplicationController
 	include Webhookable
+	skip_before_action :verify_authenticity_token
 	
 	def index
 		@all_texts = SmsLog.all
