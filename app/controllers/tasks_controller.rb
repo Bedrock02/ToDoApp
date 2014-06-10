@@ -26,7 +26,6 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.status_incomplete
-
     @task.user = current_user
 
 
