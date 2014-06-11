@@ -33,11 +33,45 @@ describe "ToDo List" do
 
 	context "User can create a new task" do
 		it "should display task" do
-			click_button "New Task"
-			fill_in "task[body]", with: "blah blah blah"
-			click_button "Create Task"
+			new_task = "Watch Fifa World Cup 2014"
+			click_link "New Task"
 
-			expect(page).to have_content "blah blah blah"
+			expect(page).to have_content "New task"
+			expect(page).to have_content "Body"
+			fill_in "Body", with: new_task
+			click_button 'Create Task'
+			
+			expect(page).to have_content new_task
+		end
+	end
+
+	before(:each) do
+		task = FactoryGirl.create(:task)
+		@user.tasks << task
+		@user.save
+	end
+
+	context "A new Task is created" do
+		
+		it "should display a button to mark complete" do
+			visit '/'
+			within('.to-do-tasks') do
+				expect(page).to have_content 'Mark Complete'
+			end
+		end
+
+		it "should contain a delete button" do
+			visit '/'
+			within('.to-do-tasks') do
+				expect(page).to have_css('.glyphicon-trash')
+			end
+		end
+		
+		it "should contain an edit button" do
+			visit '/'
+			within('.to-do-tasks') do
+				expect(page).to have_css('.glyphicon-pencil')
+			end
 		end
 	end
 end
