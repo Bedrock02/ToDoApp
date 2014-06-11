@@ -1,4 +1,5 @@
 class TextsController < ApplicationController
+	before_action :authenticate_user!, only:[:verify_user,:send_verification]
 	include Webhookable
 	
 	after_filter :set_header, only:[:messaging]
