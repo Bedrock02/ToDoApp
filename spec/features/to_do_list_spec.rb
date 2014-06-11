@@ -6,7 +6,7 @@ describe "ToDo List" do
 	
 	before(:each) do
 		@user = FactoryGirl.create(:user)
-		login_as(@user, :scope => :user)
+		login_as(@user, scope: :user)
 		visit '/'
 	end
 
@@ -42,36 +42,6 @@ describe "ToDo List" do
 			click_button 'Create Task'
 			
 			expect(page).to have_content new_task
-		end
-	end
-
-	before(:each) do
-		task = FactoryGirl.create(:task)
-		@user.tasks << task
-		@user.save
-	end
-
-	context "A new Task is created" do
-		
-		it "should display a button to mark complete" do
-			visit '/'
-			within('.to-do-tasks') do
-				expect(page).to have_content 'Mark Complete'
-			end
-		end
-
-		it "should contain a delete button" do
-			visit '/'
-			within('.to-do-tasks') do
-				expect(page).to have_css('.glyphicon-trash')
-			end
-		end
-		
-		it "should contain an edit button" do
-			visit '/'
-			within('.to-do-tasks') do
-				expect(page).to have_css('.glyphicon-pencil')
-			end
 		end
 	end
 end
