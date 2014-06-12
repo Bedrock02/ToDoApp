@@ -17,7 +17,6 @@ describe Task do
 	end
 
 	describe Task, '.status_complete' do
-	
 		it 'changes to complete state' do
 			@task.status_complete
 			expect(@task.status).to eq("complete")
