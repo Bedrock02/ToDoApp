@@ -13,7 +13,7 @@ class TextsController < ApplicationController
 		account_sid = 'AC3126b43bc8d57aa5750bc123c75aabab'
 		auth_token = 'ab465cea4dd39ee5bd577eab69adce53'
 		@client = Twilio::REST::Client.new account_sid, auth_token
-		@caller_id = @client.account.outgoing_caller_ids.create(:phone_number => number)
+		@caller_id = @client.account.outgoing_caller_ids.create(phone_number: number)
 	end
 
 	def messaging
