@@ -13,7 +13,7 @@ describe "User must be authenticated first"  do
 			}
 		end
 	end
-
+	
 	context "User Attempts to create a new task before signing in" do
 		it "redirects to root and shows Sign in form" do
 			visit new_task_path
