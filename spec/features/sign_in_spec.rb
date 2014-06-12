@@ -3,14 +3,14 @@ describe "Logging in a User" do
 	
 	before(:each) do
 		@user = FactoryGirl.create(:user)
+		visit '/'
 	end
 	
 	context "User is able to log into the application" do
 		it "Shows user's ToDo List" do		
-			visit '/'
 			within('#new_user') do
-				fill_in 'Email', :with => @user.email
-				fill_in 'Password', :with => @user.password
+				fill_in 'Email', with: @user.email
+				fill_in 'Password', with: @user.password
 			end
 			click_button('Sign in')
 
@@ -20,10 +20,9 @@ describe "Logging in a User" do
 
 	context "User enters wrong credentials" do
 		it "Does not log in user" do
-			visit '/'
 			within('#new_user') do
-				fill_in 'Email', :with => @user.email
-				fill_in 'Password', :with => "notmypassword"
+				fill_in 'Email', with: @user.email
+				fill_in 'Password', with: "notmypassword"
 			end
 			click_button('Sign in')
 
