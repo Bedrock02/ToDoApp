@@ -20,13 +20,19 @@ class TextsController < ApplicationController
 		text_body = params[:Body]
 		from_number = params[:From]
 
-		create_task_for_user(from_number,text_body)
+		if create_task_for_user(from_number,text_body)
 		
-		@new_log = SmsLog.new(body: text_body, from: from_number)
-		@new_log.save
+			@new_log = SmsLog.new(body: text_body, from: from_number)
+			@new_log.save
+
+			response = Twilio::TwiML::Response.new do |r|
+				r.Message "You have just texted in your new Task. We will update your profile for you."
+			end
 		
-		response = Twilio::TwiML::Response.new do |r|
-			r.Message "You have just texted in your new Task. We will update your profile for you."
+		else
+			response = Twilio::TwiML::Response.new do |r|
+				r.Message "Your number is not registered with the ToDo List Application. Please check with admin."
+			end
 		end
 		render_twiml(response)
 	end
@@ -36,12 +42,19 @@ class TextsController < ApplicationController
 		modified_format.insert(3,"-")
 		modified_format.insert(7,"-")
 		user = User.find_by_phone_number(modified_format)
+		
+		if user.nil?
+			user = User.find_by_phone_number(number[1..-1])
+		end
 
 		unless user.nil?
 			task = Task.new(body:text)
 			task.status_incomplete
 			task.user = user
 			task.save
+			return true
 		end 
+		
+		return false
 	end
 end
