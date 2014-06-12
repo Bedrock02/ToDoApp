@@ -1,6 +1,12 @@
-<h1>Editing task</h1>
+<div class = "row">
+	<h1>Editing task</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+	<!--<%= link_to 'Show', @task %> |-->
+	<%= link_to tasks_path do %>
+		<button type = "button" class = "btn btn-primary">
+			Back
+		</button>
+	<% end %>
+</div>
